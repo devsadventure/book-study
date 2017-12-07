@@ -104,18 +104,14 @@ General(ex. Via) / Request / Response / Entity(ex. Content-Length) 네 개로 �
 
 일반 헤더 필드는 메시지 전체에 적용된다.
 
-#### 6.3.1. Cache-control
-
-캐시의 동작을 지정한다. (상세 디렉티브 내용은 책 참조.)
+* Cache-control: 캐시의 동작을 지정한다. (상세 디렉티브 내용은 책 참조.)
 
 ```js
 // 여러 개의 디렉티브를 지정하는 경우
 Cache-Control: private, max-age=0, no-cache
 ```
 
-#### 6.3.2. Connection
-
-**프록시에 더 이상 전송하지 않는 헤더 필드**(hop-to-hop 헤더)를 지정하고, **지속접속을 관리**하는 역할을 한다.
+* Connection: **프록시에 더 이상 전송하지 않는 헤더 필드**(hop-to-hop 헤더)를 지정하고, **지속접속을 관리**하는 역할을 한다.
 
 ```js
 //프록시에 전송하지 않을 헤더필드 지정
@@ -125,17 +121,11 @@ Connection: Upgrade
 Connection: Close
 ```
 
-#### 6.3.3. Date
+* Date: HTTP 메시지 생성 날짜를 표시한다.
 
-HTTP 메시지 생성 날짜를 표시한다.
+* Pragma: 구버전(HTTP/1.0)의 흔적으로 호환성만을 위해 정의되어 있다.
 
-#### 6.3.4. Pragma
-
-구버전(HTTP/1.0)의 흔적으로 호환성만을 위해 정의되어 있다.
-
-#### 6.3.5. Trailer
-
-메시지 바디에 기술되어 있는 내용을 미리 알려준다.
+* Trailer: 메시지 바디에 기술되어 있는 내용을 미리 알려준다.
 
 ```js
 HTTP/1.1 200 OK
@@ -147,27 +137,18 @@ Trailer: Expires
 Expires: Tue, 28 Sep 2004 23:59:59 GMT
 ```
 
-#### 6.3.6. Transfer-Encoding
+* Transfer-Encoding: 메시지 바디의 전송코딩 형식을 지정한다.
 
-메시지 바디의 전송코딩 형식을 지정한다.
+* Upgrade: HTTP 및 다른 프로토콜의 새로운 버전이 통신에 이용되는 경우 사용된다. 이때, Connection도 Upgrade 로 지정해줘야 한다.
 
-#### 6.3.7. Upgrade
+* Via: 프록시 혹은 게이트웨이 이용 시에 해당 서버 정보를 Via 에 추가한다. 경로를 알기 위해 사용된다.
 
-HTTP 및 다른 프로토콜의 새로운 버전이 통신에 이용되는 경우 사용된다. 이때, Connection도 Upgrade 로 지정해줘야 한다.
-
-#### 6.3.8. Via
-
-프록시 혹은 게이트웨이 이용 시에 해당 서버 정보를 Via 에 추가한다. 경로를 알기 위해 사용된다.
-
-#### 6.3.9. Warning
-
-기본적으로 7개의 경고 코드가 미리 정의되어 있다.
-
-* 110: response is state (프록시가 유효기간 지난 리소스를 반환)
-* 111: revalidate failed (프록시가 리소스 유효성 재확인에 실패)
-* 112: Disconnection operation (프록시가 네트워크로부터 끊겨있음)
-* 113: Heuristic expiration (리스폰스가 유효기간(24시간)을 경과하고 있는 경우)
-* 214: Transformation applied (프록시가 인코딩, 미디어타입 등에 어떤 처리를 한 경우)
+* Warning: 기본적으로 7개의 경고 코드가 미리 정의되어 있다.
+  * 110: response is state (프록시가 유효기간 지난 리소스를 반환)
+  * 111: revalidate failed (프록시가 리소스 유효성 재확인에 실패)
+  * 112: Disconnection operation (프록시가 네트워크로부터 끊겨있음)
+  * 113: Heuristic expiration (리스폰스가 유효기간(24시간)을 경과하고 있는 경우)
+  * 214: Transformation applied (프록시가 인코딩, 미디어타입 등에 어떤 처리를 한 경우)
 
 ### 6.4. 리퀘스트 헤더 필드
 
